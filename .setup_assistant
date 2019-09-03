@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: ipa-kut
     author_email: kut@ipa.fraunhofer.de
-    generated_timestamp: 1567513886
+    generated_timestamp: 1567520416
