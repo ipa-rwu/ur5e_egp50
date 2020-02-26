@@ -12,7 +12,7 @@
   </include>
 
   <!-- send robot urdf to param server -->
-  <include file="$(find ur_manipulation)/launch/ur5e_egp50_upload.launch">
+  <include file="$(find ur5e_egp50_description)/launch/ur5e_egp50_upload.launch">
     <arg name="limited" value="$(arg limited)"/>
   </include>
 
