@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" 
+       name="ur5e_egp50">
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+
+  <!-- Load ur5e + Custom Gripper-->
+  <!-- arm from  ur_e_description-->
+  <xacro:include filename="$(find ur_e_description)/urdf/ur5e.urdf.xacro" />
+  <!-- schunk_egp50 -->
+  <xacro:include filename="$(find ur5e_egp50_description)/urdf/egp50.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:arg name="kinematics_config" default="$(find ur_e_description)/config/ur5e_default.yaml"/>
+  <xacro:ur5e_robot prefix="" joint_limited="false"
+    kinematics_file="${load_yaml('$(arg kinematics_config)')}"
+  />
+
+  <!-- gripper -->
+  <xacro:schunk_egp50 />
+
+  <!-- table -->
+  <xacro:include filename="$(find ur5e_egp50_description)/urdf/table_ur.urdf.xacro" />
+
+  <!-- wall -->
+  <xacro:include filename="$(find ur5e_egp50_description)/urdf/cell_wall.urdf.xacro" />
+
+  <link name="world" />
+
+  <!-- table world -->
+	<xacro:table prefix="table_" parent="world">
+  	  <origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:table>
+
+    <!-- wall table -->
+	<xacro:cell_wall prefix="back_" parent="table_platform_base" cell_width="0.96">
+  	  <origin xyz="0 0 0.01" rpy="0 0 0"/>
+	</xacro:cell_wall>
+  	<xacro:cell_wall prefix="right_" parent="table_platform_base" cell_width="1.44">
+  	  <origin xyz="0.05 0.06 0.01" rpy="0 0 1.57"/>
+	</xacro:cell_wall>
+  	<xacro:cell_wall prefix="left_" parent="table_platform_base" cell_width="1.44">
+  	  <origin xyz="0.96 0.06 0.01" rpy="0 0 1.57"/>
+	</xacro:cell_wall>
+  
+  <!-- arm base and table -->
+  <joint name="table_joint" type="fixed">
+    <parent link="table_platform_flange" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <!-- gripper and  arm wrist-->
+  <joint name="wrist_joint" type="fixed">
+    <parent link="ee_link" />
+    <child link = "egp50_base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 1.57 0.0" />
+  </joint>
+  
+</robot>

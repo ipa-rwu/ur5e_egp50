@@ -20,9 +20,10 @@
   <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="/use_gui" value="false"/> 
-    <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+    <!-- start from home position -->
+     <rosparam file="$(find ur5e_egp50_moveit_config)/config/zeros.yaml"/>
   </node>
-  
+
   <!-- Given the published joint states, publish tf for the robot links -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
 
