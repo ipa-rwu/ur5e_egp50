@@ -1,25 +1,26 @@
 <launch>
-  <arg name="sim" default="false" />
-  <arg name="limited" default="false"/>
+
+  <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
-  <arg name="rviz" default="true" />
+  
+  <arg name="limited" default="false"/>
+
+  <arg name="sim" default="false" />
 
   <!-- Remap follow_joint_trajectory -->
   <remap if="$(arg sim)" from="/follow_joint_trajectory" to="/follow_joint_trajectory"/>
   <remap unless="$(arg sim)" from="/follow_joint_trajectory" to="/scaled_pos_joint_traj_controller/follow_joint_trajectory"/>
 
   <!-- Launch moveit -->
-  <include file="$(find ur5e_egp50_moveit_config)/launch/move_group.launch">
+  <include file="$(find ur5e_egp50q_moveit_config)/launch/move_group.launch">
     <arg name="limited" default="$(arg limited)"/>
     <arg name="debug" default="$(arg debug)" />
   </include>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <group if="$(arg rviz)">
-    <include file="$(find ur5e_egp50_moveit_config)/launch/moveit_rviz.launch">
-      <arg name="config" value="true"/>
-      <arg name="debug" value="$(arg debug)"/>
-    </include>
-  </group>
-
+  <include file="$(find ur5e_egp50q_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+  
 </launch>
