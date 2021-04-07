@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>ur5e_egp50_bringup</name>
-  <version>1.2.5</version>
+  <version>1.2.6</version>
   <description>The ur5e_egp50_bringup package</description>
 
   <author>ipa-rwu</author>

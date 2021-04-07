@@ -2,8 +2,8 @@
 Changelog for package ur5e_egp50_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.6 (2021-04-07)
+------------------
 * current working version
 * start with real robot or rviz
 * sim setup in rviz
