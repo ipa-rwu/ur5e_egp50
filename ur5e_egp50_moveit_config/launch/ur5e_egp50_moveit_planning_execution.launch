@@ -1,6 +1,6 @@
 <launch>
   <arg name="sim" default="false" />
-  <arg name="limited" default="false"/>
+  <arg name="limited" default="true"/>
   <arg name="debug" default="false" />
   <arg name="rviz" default="true" />
 
@@ -13,6 +13,11 @@
     <arg name="limited" default="$(arg limited)"/>
     <arg name="debug" default="$(arg debug)" />
   </include>
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster"
+      args="0.0363618 0.0505498 0.0233427 -0.00565032 -0.0329652 0.0147777 0.999331 /ee_link /camera_link 100" /> -->
+<node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster"
+      args="0.0645515 0.0132529 0.0349103   0.0696055 -0.0332721 0.00216745 0.997017 /ee_link /camera_link 100" />
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <group if="$(arg rviz)">

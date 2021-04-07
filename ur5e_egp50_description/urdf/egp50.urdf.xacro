@@ -109,7 +109,7 @@
 
     <joint name="egp50_tip_joint" type="fixed">
         <parent link="egp50_pincer_link"/>
-	<child link="egp_50_tip" />
+	      <child link="egp_50_tip" />
         <origin xyz="0.0 0.0 ${pincer_height/2}" rpy="0.0 0.0 0.0" />
     </joint>
 
