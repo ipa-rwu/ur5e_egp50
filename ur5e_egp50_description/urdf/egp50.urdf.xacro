@@ -47,7 +47,6 @@
     <link name="egp50_body_link">
       <visual>
         <geometry>
- 	        <!-- <mesh filename="$(find ur_manipulation)/meshes/EGP50.stl" /> -->
           <box size="${body_length} ${body_width} ${body_height}" />
         </geometry>
         <material name="green"/>
@@ -55,7 +54,6 @@
       </visual>
       <collision>
         <geometry>
-          <!-- <mesh filename="$(find ur_manipulation)/meshes/EGP50.stl" /> -->
           <box size="${body_length} ${body_width} ${body_height}" />
         </geometry>
         <origin rpy="0 0 0" xyz="0 0 0"/>

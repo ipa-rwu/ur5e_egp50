@@ -1,6 +1,6 @@
 moveit_setup_assistant_config:
   URDF:
-    package: ur_manipulation
+    package: ur5e_egp50_description
     relative_path: urdf/ur5e_robot_egp50.urdf.xacro
     xacro_args: ""
   SRDF:
